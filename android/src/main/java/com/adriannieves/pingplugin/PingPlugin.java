@@ -27,6 +27,13 @@ public void ping(PluginCall call) {
         boolean reachable = inet.isReachable(1000); // timeout 1s
         String hostname = inet.getCanonicalHostName(); // aquí sacamos el nombre
 
+          if (hostname.equals(ip)) {
+                hostname = "Nombre desconocido";
+            }
+
+        Log.i("PingPlugin", "IP: " + ip + " | Hostname: " + hostname + " | Reachable: " + reachable);
+
+
         com.getcapacitor.JSObject result = new com.getcapacitor.JSObject();
         result.put("alive", reachable);
         result.put("hostname", hostname);
